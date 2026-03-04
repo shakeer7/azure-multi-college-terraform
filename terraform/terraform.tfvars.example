@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────
+# Example terraform.tfvars
+# Copy this to terraform.tfvars and fill values
+# ─────────────────────────────────────────────
+
+location     = "eastus"
+environment  = "prod"
+project_name = "college-saas"
+
+tenants = [
+  { id = "tenant-a", name = "College A" },
+  { id = "tenant-b", name = "College B" },
+  { id = "tenant-c", name = "College C" }
+]
+
+# SQL credentials – use Azure Key Vault or environment variables in CI
+sql_admin_username = "sqladmin"
+sql_admin_password = "CHANGE_ME_USE_KEYVAULT!"
+
+apim_publisher_name  = "College SaaS Platform"
+apim_publisher_email = "admin@collegesaas.com"
+
+app_service_sku = "P2v3"   # P1v3 (dev), P2v3 (prod), P3v3 (high-load)
+redis_sku       = "Standard"
+redis_family    = "C"
+redis_capacity  = 1         # 0=250MB, 1=1GB, 2=6GB, 3=13GB
+
+tags = {
+  Project     = "College SaaS Platform"
+  ManagedBy   = "Terraform"
+  Environment = "prod"
+  CostCenter  = "Engineering"
+}
